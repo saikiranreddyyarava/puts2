@@ -3,7 +3,7 @@ import unittest
 
 class MyTestCase(unittest.TestCase):
 
-<<<<<<< HEAD
+
         def setUp(self):
             main.app.testing = True
             self.app = main.app.test_client()
@@ -20,10 +20,6 @@ class MyTestCase(unittest.TestCase):
         def test_addneg(self):
             valuesread=  self.app.get('/add?A=6.2&B=-8.2')
             self.assertEqual(b'-2.0', valuesread.data)
-=======
-	def setUp(self):
-            main.app.testing = True
-            self.app = main.app.test_client()
 
 	def test_subint(self):
             valuesread =  self.app.get('/sub?A=9&B=13')
@@ -37,7 +33,7 @@ class MyTestCase(unittest.TestCase):
         def test_subneg(self):
             valuesread =  self.app.get('/sub?A=6.4&B=-9.3')
             self.assertEqual(b'2.9', valuesread.data)
->>>>>>> subtraction
+
 
 if __name__ == '__main__':
     unittest.main()
