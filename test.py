@@ -3,7 +3,6 @@ import unittest
 
 class MyTestCase(unittest.TestCase):
 
-<<<<<<< HEAD
 
         def setUp(self):
             main.app.testing = True
@@ -35,10 +34,6 @@ class MyTestCase(unittest.TestCase):
             valuesread =  self.app.get('/sub?A=6.4&B=-9.3')
             self.assertEqual(b'2.9', valuesread.data)
 
-=======
-	def setUp(self):
-            main.app.testing = True
-            self.app = main.app.test_client()
 
 	def test_mulint(self):
             valuesread =  self.app.get('/mul?A=12&B=10')
@@ -52,7 +47,7 @@ class MyTestCase(unittest.TestCase):
         def test_mulneg(self):
             valuesread =  self.app.get('/mul?A=7.5&B=-9.3')
             self.assertEqual(b'-69.75', valuesread.data)
->>>>>>> multiplication
+
 
 if __name__ == '__main__':
     unittest.main()
