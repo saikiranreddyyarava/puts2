@@ -45,7 +45,7 @@ def subtraction():
 
 @app.route('/mul')
 def multiplication():
-     try:
+    try:
         value1=request.args.get('A',default = 0, type = Fraction)
     except ZeroDivisionError as error:
         value1='None'
