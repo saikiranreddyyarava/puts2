@@ -45,15 +45,20 @@ class MyTestCase(unittest.TestCase):
 	def test_mulint(self):
             valuesread =  self.app.get('/mul?A=12&B=10')
             self.assertEqual(b'120.0', valuesread.data)
+        
+        def test_mulint(self):
+            valuesread =  self.app.get('/mul?A=123&B=298')
+            self.assertEqual(b'36654', valuesread.data.strip())
         def test_mulfloat(self):
-            valuesread =  self.app.get('/mul?A=6.2&B=8.4')
-            self.assertEqual(b'52.08', valuesread.data)
+            valuesread =  self.app.get('/mul?A=6.2&B=8.6')
+            self.assertEqual(b'53.32', valuesread.data.strip())
         def test_mulfrac(self):
             valuesread =  self.app.get('/mul?A=6/2&B=7/5')
-            self.assertEqual(b'4.2', valuesread.data)
+            self.assertEqual(b'4.2', valuesread.data.strip())
         def test_mulneg(self):
             valuesread =  self.app.get('/mul?A=7.5&B=-9.3')
-            self.assertEqual(b'-69.75', valuesread.data)
+            self.assertEqual(b'-69.75', valuesread.data.strip())
+
 
 
  	def test_divint(self):
