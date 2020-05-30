@@ -40,7 +40,6 @@ class MyTestCase(unittest.TestCase):
             self.assertEqual(b'108.5', valuesread.data.strip())
 
 
-
         def test_mulint(self):
             valuesread =  self.app.get('/mul?A=12&B=10')
             self.assertEqual(b'120.0', valuesread.data.strip())       
