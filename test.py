@@ -23,10 +23,9 @@ class MyTestCase(unittest.TestCase):
             valuesread=  self.app.get('/add?A=15.1&B=-8.2')
             self.assertEqual(b'6.9', valuesread.data.strip())
 
-	def test_subint(self):
+        def test_subint(self):
             valuesread =  self.app.get('/sub?A=9&B=13')
-            self.assertEqual(b'-4.0', valuesread.data)
-        
+            self.assertEqual(b'-4.0', valuesread.data.strip())
         def test_subint(self):
             valuesread =  self.app.get('/sub?A=589&B=492')
             self.assertEqual(b'97', valuesread.data.strip())
@@ -42,10 +41,9 @@ class MyTestCase(unittest.TestCase):
 
 
 
-	def test_mulint(self):
+        def test_mulint(self):
             valuesread =  self.app.get('/mul?A=12&B=10')
-            self.assertEqual(b'120.0', valuesread.data)
-        
+            self.assertEqual(b'120.0', valuesread.data.strip())       
         def test_mulint(self):
             valuesread =  self.app.get('/mul?A=123&B=298')
             self.assertEqual(b'36654', valuesread.data.strip())
@@ -59,23 +57,21 @@ class MyTestCase(unittest.TestCase):
             valuesread =  self.app.get('/mul?A=7.5&B=-9.3')
             self.assertEqual(b'-69.75', valuesread.data.strip())
 
-
-
- 	def test_divint(self):
-            valuesread =  self.app.get('/div?A=6&B=9')
-            self.assertEqual(b'0.667', valuesread.data)
+        def test_divint(self):
+            valuesread =  self.app.get('/div?A=6&B=15')
+            self.assertEqual(b'0.4', valuesread.data.strip())
         def test_divfloat(self):
-            valuesread =  self.app.get('/div?A=6.4&B=5.5')
-            self.assertEqual(b'1.164', valuesread.data)
+            valuesread =  self.app.get('/div?A=6.4&B=3.2')
+            self.assertEqual(b'2.0', valuesread.data.strip())
         def test_divfrac(self):
-            valuesread =  self.app.get('/div?A=6/4&B=9/5')
-            self.assertEqual(b'0.833', valuesread.data)
+            valuesread =  self.app.get('/div?A=18/5&B=24/2')
+            self.assertEqual(b'0.075', valuesread.data.strip())
         def test_divneg(self):
-            valuesread =  self.app.get('/div?A=6.5&B=-9.8')
-            self.assertEqual(b'-0.663', valuesread.data)
+            valuesread =  self.app.get('/div?A=16.1&B=-5/2')
+            self.assertEqual(b'-1.61', valuesread.data.strip())
         def test_zerodiv(self):
-            valuesread = self.app.get('/div?A=6&B=9/0')
-            self.assertEqual(b'None',valuesread.data)
+            valuesread = self.app.get('/div?A=16.1&B=5/0')
+            self.assertEqual(b'"ERROR! invalid input"',valuesread.data.strip())
 
 
 if __name__ == '__main__':
