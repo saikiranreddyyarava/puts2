@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 from flask import Flask, request, jsonify
 from fractions import Fraction
 from decimal import Decimal
@@ -44,21 +45,19 @@ def addition():
 
 @app.route('/sub')
 def subtraction():
-    try:
-        value1=request.args.get('A',default = 0, type = Fraction)
-    except ZeroDivisionError as error:
-        value1='None'
-    try:
-        value2=request.args.get('B',default = 0, type = Fraction)
-    except ZeroDivisionError as error:
-        value2='None'
-    if value1 == 'None' or value2 == 'None' :
-        return 'None'
-    else:
-        input1= Fraction(value1)
-        input2= Fraction(value2)
-        output= input1-input2
-        return(str(round(float(output),3)))
+    err = ""
+    value1=request.args.get('A',default = 0)
+    value2 = request.args.get('B', default=0)
+    v1, err1 = check_value(value1)
+    v2, err2 = check_value(value2)
+    #print("debug: {} - {}\n{} - {}".format(v1, err1, v2, err2))
+    if err1 == "ERROR":
+        return jsonify("ERROR! invalid input"), 500
+    if err2 == "ERROR":
+        return jsonify("ERROR! invalid input"), 500
+    #print('{} - {} = '.format(value1, value2))
+    output= eval('{} - {}'.format(value1, value2))
+    return jsonify(output)
 
 @app.route('/mul')
 def multiplication():
